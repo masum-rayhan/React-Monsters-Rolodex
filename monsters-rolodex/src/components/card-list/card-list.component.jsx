@@ -11,6 +11,6 @@ class CardList extends Component {
       </div>
     );
   }
-}
+} 
 
 export default CardList;
