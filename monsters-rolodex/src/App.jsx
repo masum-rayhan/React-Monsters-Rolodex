@@ -2,6 +2,7 @@ import { Component, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import CardList from "./components/card-list/card-list.component";
 
 class App extends Component {
   constructor() {
@@ -31,9 +32,8 @@ class App extends Component {
   };
 
   render() {
-
-    const {monsters, searchField} = this.state;
-    const {onSearchChange} = this;
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
 
     const filteredMonsters = monsters.filter((monster) => {
       return monster.name.toLocaleLowerCase().includes(searchField);
@@ -47,13 +47,7 @@ class App extends Component {
             placeholder="search monsters"
             onChange={onSearchChange}
           />
-          {filteredMonsters.map((monster) => {
-            return (
-              <div key={monster.id}>
-                <h1>{monster.name}</h1>
-              </div>
-            );
-          })}
+          <CardList monsters={filteredMonsters} />
         </div>
       </>
     );
